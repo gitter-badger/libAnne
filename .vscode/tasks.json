@@ -28,6 +28,17 @@
 			],
 			"group": "build",
 			"problemMatcher": []
+		},
+		{
+			"label": "metrics",
+			"type": "shell",
+			"command": "gnatmetric",
+			"args": [
+				"-P",
+				"libAnne.gpr"
+			],
+			"group": "build",
+			"problemMatcher": []
 		}
 	]
 }
