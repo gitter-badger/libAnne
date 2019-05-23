@@ -10,7 +10,8 @@
 			"args": [
 				"-P",
 				"libAnne.gpr",
-				"-p"
+				"-p",
+				"-j8"
 			],
 			"group": {
 				"kind": "build",

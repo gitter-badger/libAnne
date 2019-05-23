@@ -1,5 +1,11 @@
 library project libAnne is
-    for Source_Dirs use (".");
+    type Platform_Type is ("UNIX", "Windows");
+    Platform : Platform_Type := external("Platform", "UNIX");
+
+    case Platform is
+        when "UNIX" => for Source_Dirs use (".", "UNIX");
+        when "Windows" => for Source_Dirs use (".", "Windows");
+    end case;
     for Object_Dir use "objects";
     for Library_Dir use "libraries";
 
