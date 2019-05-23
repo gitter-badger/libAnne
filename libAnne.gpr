@@ -3,8 +3,8 @@ library project libAnne is
     Platform : Platform_Type := external("Platform", "UNIX");
 
     case Platform is
-        when "UNIX" => for Source_Dirs use (".", "UNIX");
-        when "Windows" => for Source_Dirs use (".", "Windows");
+        when "UNIX" => for Source_Dirs use (".", "Common", "UNIX");
+        when "Windows" => for Source_Dirs use (".", "Common", "Windows");
     end case;
     for Object_Dir use "objects";
     for Library_Dir use "libraries";
