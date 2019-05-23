@@ -1,0 +1,30 @@
+library project libAnne is
+    for Source_Dirs use (".");
+    for Object_Dir use "objects";
+    for Library_Dir use "libraries";
+
+    for Library_Name use "Anne";
+    for Library_Kind use "dynamic";
+    for Library_Version use "libAnne.so.1";
+
+    package Builder is
+    end Builder;
+
+    package Compiler is
+        for Default_Switches("Ada") use ("-O2", "-gnatA", "-gnatW8", "-fPIC", "-shared");
+    end Compiler;
+
+    package Binder is
+    end Binder;
+
+    package Linker is
+    end Linker;
+
+    package Naming is
+        for Casing use "MixedCase";
+        for Dot_Replacement use ".";
+        for Spec_Suffix("Ada") use ".ads";
+        for Body_Suffix("Ada") use ".adb";
+    end Naming;
+
+end libAnne;
