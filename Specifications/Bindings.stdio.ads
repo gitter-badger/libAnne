@@ -1,10 +1,12 @@
 pragma Restrictions(No_Exceptions);
+pragma Restrictions(No_Tasking);
 
 with System;
 use System;
 
 package Bindings.stdio with Elaborate_Body is
 --@description Provides bindings to C's stdio.h
+--@see http://www.cplusplus.com/reference/cstdio/
 --@version 1.0.0
 
 	stdin : Address; --@description The standard input stream is the default source of data for applications. In most systems, it is usually directed by default to the keyboard.
@@ -25,5 +27,6 @@ package Bindings.stdio with Elaborate_Body is
 	--@param character The int promotion of the character to be written. The value is internally converted to an unsigned char when written.
 	--@param stream Pointer to a FILE object that identifies an output stream.
 	--@return On success, the character written is returned. If a writing error occurs, EOF is returned and the error indicator (ferror) is set.
+	--@see http://www.cplusplus.com/reference/cstdio/fputc/
 
 end Bindings.stdio;
