@@ -40,6 +40,18 @@
 			],
 			"group": "build",
 			"problemMatcher": []
+		},
+		{
+			"label": "build tests",
+			"type": "shell",
+			"command": "gprbuild",
+			"args": [
+				"-P",
+				"tests/Tests.gpr",
+				"-p"
+			],
+			"group": "test",
+			"problemMatcher": []
 		}
 	]
 }

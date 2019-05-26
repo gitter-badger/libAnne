@@ -18,9 +18,11 @@ library project libAnne is
 
     package Compiler is
         for Default_Switches("Ada") use ("-O2", "-gnatA", "-gnatW8", "-fPIC", "-shared");
+        for Local_Configuration_Pragmas use "gnat.adc";
     end Compiler;
 
     package Binder is
+        for Default_Switches("Ada") use ("-r");
     end Binder;
 
     package Linker is
