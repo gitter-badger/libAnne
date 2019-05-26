@@ -12,6 +12,8 @@ library project libAnne is
     for Library_Name use "Anne";
     for Library_Kind use "dynamic";
     for Library_Version use "libAnne.so.1";
+    for Library_Interface use (
+        "Bindings", "Bindings.cwchar", "Bindings.stdio");
 
     package Builder is
     end Builder;
