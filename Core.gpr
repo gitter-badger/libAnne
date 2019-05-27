@@ -1,0 +1,40 @@
+with "Bindings";
+
+library project Core is
+    type Platform_Type is ("UNIX", "Windows");
+    Platform : Platform_Type := external("Platform", "UNIX");
+
+    case Platform is
+        when "UNIX" => for Source_Dirs use ("Common", "UNIX");
+        when "Windows" => for Source_Dirs use ("Common", "Windows");
+    end case;
+    for Object_Dir use "objects";
+    for Library_Dir use "libraries";
+
+    for Library_Name use "Anne";
+    for Library_Kind use "dynamic";
+    for Library_Version use "libAnne.so.1";
+
+    package Builder is
+    end Builder;
+
+    package Compiler is
+        for Default_Switches("Ada") use ("-O2", "-gnatA", "-gnatW8", "-fPIC", "-shared");
+        for Local_Configuration_Pragmas use "Common/gnat.adc";
+    end Compiler;
+
+    package Binder is
+        for Default_Switches("Ada") use ("-r");
+    end Binder;
+
+    package Linker is
+    end Linker;
+
+    package Naming is
+        for Casing use "MixedCase";
+        for Dot_Replacement use ".";
+        for Spec_Suffix("Ada") use ".ads";
+        for Body_Suffix("Ada") use ".adb";
+    end Naming;
+
+end Core;
