@@ -1,0 +1,7 @@
+pragma Ada_2012;
+pragma Assertion_Policy(Check);
+pragma Elaboration_Checks(Static);
+pragma Extensions_Allowed(On);
+pragma Validity_Checks(All_Checks);
+pragma Warnings(On);
+pragma Wide_Character_Encoding(UTF8);

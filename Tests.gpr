@@ -1,0 +1,24 @@
+with "Bindings";
+with "Core";
+with "Testing";
+
+project Tests is
+
+	for Source_Dirs use ("Tests");
+	for Object_Dir use "objects";
+	for Library_Dir use "libraries";
+	for Exec_Dir use "Tests";
+
+	package Compiler is
+		for Default_Switches("Ada") use ("-O2", "-gnatA", "-gnatW8", "-fPIC", "-shared");
+		for Local_Configuration_Pragmas use "Tests/gnat.adc";
+	end Compiler;
+
+    package Naming is
+        for Casing use "MixedCase";
+        for Dot_Replacement use ".";
+        for Spec_Suffix("Ada") use ".ads";
+        for Body_Suffix("Ada") use ".adb";
+    end Naming;
+
+end Tests;
