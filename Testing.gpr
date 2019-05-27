@@ -1,0 +1,42 @@
+with "Core";
+
+library project Testing is
+
+	for Source_Dirs use ("Testing");
+	for Object_Dir use "objects";
+	for Library_Dir use "libraries";
+
+	for Library_Name use "Testing";
+	for Library_Kind use "dynamic";
+	for Library_Version use "libTesting.so.1";
+	for Library_Interface use (
+		"Generics.Testing",
+		"Generics.Testing.Assertions",
+		"Generics.Testing.Decimal_Assertions",
+		"Generics.Testing.Definite_Assertions",
+		"Generics.Testing.Discrete_Assertions",
+		"Generics.Testing.Fixed_Assertions",
+		"Generics.Testing.Float_Assertions",
+		"Testing",
+		"Testing.Assertions",
+		"Testing.Counters",
+		"Testing.Timers"
+	);
+
+	package Compiler is
+		for Default_Switches("Ada") use ("-O2", "-gnatA", "-gnatW8", "-fPIC", "-shared");
+		for Local_Configuration_Pragmas use "Testing/gnat.adc";
+	end Compiler;
+
+	package Binder is
+		for Default_Switches("Ada") use (""); --Don't check for restrictions. Gnatbind falsely suggests No_Multiple_Elaboration, No_Fixed_IO, No_IO, and No_Implementation_Identifiers when it shouldn't. IO especially is very clearly used. All other restrictions are enabled and apply across this entire library
+	end Binder;
+
+	package Naming is
+        for Casing use "MixedCase";
+        for Dot_Replacement use ".";
+        for Spec_Suffix("Ada") use ".ads";
+        for Body_Suffix("Ada") use ".adb";
+    end Naming;
+
+end Testing;
