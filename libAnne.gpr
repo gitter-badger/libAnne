@@ -1,3 +1,5 @@
+with "Bindings";
+
 library project libAnne is
     type Platform_Type is ("UNIX", "Windows");
     Platform : Platform_Type := external("Platform", "UNIX");
@@ -12,8 +14,6 @@ library project libAnne is
     for Library_Name use "Anne";
     for Library_Kind use "dynamic";
     for Library_Version use "libAnne.so.1";
-    for Library_Interface use (
-        "Bindings", "Bindings.cwchar", "Bindings.stdio");
 
     package Builder is
     end Builder;

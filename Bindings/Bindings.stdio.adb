@@ -1,5 +1,3 @@
-with Ada.Unchecked_Conversion;
-
 package body Bindings.stdio is
 
 	--------------------

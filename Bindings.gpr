@@ -1,0 +1,28 @@
+library project Bindings is
+
+	for Source_Dirs use ("Bindings");
+	for Object_Dir use "objects";
+	for Library_Dir use "libraries";
+
+    for Library_Name use "AdaC";
+    for Library_Kind use "dynamic";
+    for Library_Version use "libAdaC.so.1";
+	for Library_Interface use ("Bindings", "Bindings.cwchar", "Bindings.stdio");
+
+	package Compiler is
+        for Default_Switches("Ada") use ("-O2", "-gnatA", "-gnatW8", "-fPIC", "-shared");
+        for Local_Configuration_Pragmas use "Bindings/gnat.adc";
+    end Compiler;
+
+    package Binder is
+        for Default_Switches("Ada") use (""); --Don't check for restrictions. Gnatbind falsely suggested No_Multiple_Elaboration when it shouldn't. And all other restrictions are enabled and apply across this entire library
+    end Binder;
+
+    package Naming is
+        for Casing use "MixedCase";
+        for Dot_Replacement use ".";
+        for Spec_Suffix("Ada") use ".ads";
+        for Body_Suffix("Ada") use ".adb";
+    end Naming;
+
+end Bindings;
